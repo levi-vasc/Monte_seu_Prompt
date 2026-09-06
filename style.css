@@ -1,0 +1,104 @@
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --primary: #4a90e2;
+    --secondary: #ff7e67;
+    
+    /* Cores das Cartas */
+    --papel: #3b82f6; /* Azul */
+    --tarefa: #ef4444; /* Vermelho */
+    --contexto: #10b981; /* Verde */
+    --formato: #8b5cf6; /* Roxo */
+}
+
+* { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#app-container {
+    background: white;
+    width: 90%;
+    max-width: 1000px;
+    min-height: 600px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 30px;
+    overflow: hidden;
+}
+
+/* Telas */
+.screen { display: none; text-align: center; animation: fadeIn 0.5s ease; }
+.screen.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Botões */
+.btn {
+    border: none; padding: 12px 24px; border-radius: 8px; font-size: 1.1rem;
+    cursor: pointer; font-weight: bold; transition: 0.2s;
+}
+.btn.primary { background: var(--primary); color: white; }
+.btn.primary:hover { background: #357abd; }
+.btn.secondary { background: var(--secondary); color: white; }
+.btn.secondary:hover { background: #e06c55; }
+.w-100 { width: 100%; }
+.mt-2 { margin-top: 20px; }
+.hidden { display: none; }
+
+/* Tipografia e Caixas */
+.highlight-box {
+    background: #fff3cd; color: #856404; padding: 20px; border-radius: 8px;
+    font-size: 1.5rem; font-weight: bold; border: 2px dashed #ffeeba;
+}
+
+/* Layout de Montagem */
+.layout-assembly {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 20px; text-align: left;
+}
+
+/* Cartas */
+.deck { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; background: #f9f9f9; border-radius: 8px; min-height: 300px; align-content: flex-start;}
+.card {
+    padding: 10px 15px; border-radius: 8px; color: white; font-weight: bold;
+    cursor: grab; user-select: none; font-size: 0.9rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 2px solid transparent; transition: transform 0.1s;
+}
+.card:active { cursor: grabbing; transform: scale(0.95); }
+.card.papel, .badge.papel { background-color: var(--papel); }
+.card.tarefa, .badge.tarefa { background-color: var(--tarefa); }
+.card.contexto, .badge.contexto { background-color: var(--contexto); }
+.card.formato, .badge.formato { background-color: var(--formato); }
+
+/* Dropzone (Área livre, sem slots fixos) */
+.dropzone {
+    background: #eef2f5; border: 3px dashed #b0c4de; border-radius: 12px;
+    min-height: 250px; padding: 20px; display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start;
+    transition: background 0.2s;
+}
+.dropzone.dragover { background: #e0e8f0; border-color: var(--primary); }
+
+/* Preview */
+.preview-area {
+    margin-top: 20px; background: #2d3748; color: #a0aec0; padding: 15px; border-radius: 8px; font-family: monospace;
+}
+#prompt-preview { color: #edf2f7; font-size: 1.1rem; }
+
+/* Resultado */
+.result-badge { font-size: 2rem; margin-bottom: 20px; padding: 10px; border-radius: 8px; display: inline-block;}
+.badge-mestre { background: #d4edda; color: #155724; }
+.badge-alucinacao { background: #f8d7da; color: #721c24; }
+.badge-vago { background: #fff3cd; color: #856404; }
+
+.ai-response-box { background: #f8f9fa; border-left: 5px solid var(--primary); padding: 20px; margin-bottom: 20px; text-align: left;}
+.human-author-note { margin-top: 15px; font-size: 0.9rem; color: #666; font-style: italic; }
+
+/* Infográfico Introdução */
+.badges { display: flex; gap: 10px; justify-content: center; margin: 20px 0; flex-wrap: wrap;}
+.badge { padding: 5px 10px; border-radius: 5px; color: white; font-size: 0.9rem; }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte seu Prompt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- TELA 1: INTRODUÇÃO -->
+        <div id="screen-intro" class="screen active">
+            <h1>🧩 Monte seu Prompt</h1>
+            <p>Descubra como falar com a Inteligência Artificial!</p>
+            <div class="infographic">
+                <p>Um bom prompt possui 4 elementos:</p>
+                <div class="badges">
+                    <span class="badge papel">👤 Papel (Quem a IA é)</span>
+                    <span class="badge tarefa">🎯 Tarefa (O que ela fará)</span>
+                    <span class="badge contexto">🔍 Contexto (Para quem/Detalhes)</span>
+                    <span class="badge formato">📄 Formato (Como deve se parecer)</span>
+                </div>
+                <div class="example">
+                    <strong>Prompt Fraco:</strong> "Fale sobre plantas"<br><br>
+                    <strong>Prompt Completo:</strong> "Aja como um professor (Papel). Explique a fotossíntese (Tarefa) para uma criança (Contexto) usando uma rima (Formato)."
+                </div>
+            </div>
+            <button class="btn primary" onclick="goToScreen('screen-mission')">Iniciar Dinâmica</button>
+        </div>
+
+        <!-- TELA 2: SORTEIO DA MISSÃO -->
+        <div id="screen-mission" class="screen">
+            <h2>🎯 Sorteio de Missão</h2>
+            <p>Clique no botão abaixo para descobrir seu objetivo desta rodada.</p>
+            <button class="btn secondary" id="btn-sortear" onclick="sortearMissao()">Sortear Missão</button>
+            
+            <div id="mission-reveal" class="hidden">
+                <h3 class="mission-title">Sua Missão:</h3>
+                <p id="mission-text" class="highlight-box"></p>
+                <button class="btn primary mt-2" onclick="goToScreen('screen-assembly')">Ir para Montagem</button>
+            </div>
+        </div>
+
+        <!-- TELA 3: MONTAGEM LIVRE -->
+        <div id="screen-assembly" class="screen">
+            <div class="layout-assembly">
+                <!-- Baralho -->
+                <div class="deck-area">
+                    <h3>Cartas Disponíveis</h3>
+                    <p class="hint">Arraste as cartas para o quadro ao lado.</p>
+                    <div id="deck" class="deck"></div>
+                </div>
+
+                <!-- Área Livre -->
+                <div class="workspace-area">
+                    <h3>Quadro de Montagem</h3>
+                    <p class="hint">Sem limites. Misture como quiser! (Clique na carta no quadro para removê-la)</p>
+                    <div id="dropzone" class="dropzone"></div>
+                    
+                    <div class="preview-area">
+                        <h4>Preview do Prompt:</h4>
+                        <p id="prompt-preview">O prompt está vazio...</p>
+                    </div>
+                    
+                    <button class="btn primary w-100 mt-2" onclick="gerarResposta()">Gerar Resposta</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA 4: RESULTADO -->
+        <div id="screen-result" class="screen">
+            <h2 id="result-badge" class="result-badge"></h2>
+            <div class="ai-response-box">
+                <h3>Resposta da IA:</h3>
+                <p id="ai-response-text"></p>
+                <p class="human-author-note">💡 <strong>Lembre-se:</strong> Quem decidiu esse resultado foi você, a IA apenas executou o que as suas cartas pediram!</p>
+            </div>
+            <button class="btn primary mt-2" onclick="resetGame()">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
